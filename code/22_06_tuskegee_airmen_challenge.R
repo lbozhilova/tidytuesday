@@ -39,4 +39,4 @@ p <- ggplot(state_df, aes(x = num_airmen, y = num_vic_creds)) +
   scale_x_continuous("Number of airmen") +
   scale_y_continuous("Number of victory credits", limits = c(0, 15))
 
-plot_save(p, "figures/22_05_tuskegee_airmen_challenge.jpg", type = "half")
+plot_save(p, "figures/22_06_tuskegee_airmen_challenge.jpg", type = "half")
