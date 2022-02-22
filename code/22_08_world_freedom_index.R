@@ -39,7 +39,7 @@ names(is_worse_labs) <- c("TRUE", "FALSE")
 
 p <- ggplot(df, aes(y = country)) +
   theme_tt +
-  ggtitle("Changing freedoms in the former Easterm Bloc from 1995 to 2020") +
+  ggtitle("Changing freedoms in the former Eastern Bloc from 1995 to 2020") +
   geom_point(aes(x = idx_1995), colour = "grey60", size = 2) +
   geom_point(aes(x = idx_2020, colour = idx_2020 > idx_1995), size = 2) +
   geom_segment(aes(x = idx_1995, xend = idx_2020, y = country, yend = country,  colour = idx_2020 > idx_1995)) +
