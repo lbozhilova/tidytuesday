@@ -2,6 +2,8 @@
 ##### TidyTuesday ggtheme #####
 ###############################
 
+# TODO: edit entries up to & incl 22_10 to the new plot_save() function
+
 #----- Packages 
 library("tidyverse")
 
@@ -28,18 +30,16 @@ theme_tt <- theme_minimal(base_size = 10) +
   )
 
 #----- Save figure
-plot_save <- function(p, 
-                      filename, 
-                      type = c("full", "half"), 
-                      ar = 1,
-                      dev = "jpeg"){
-  type <- type[1]
-  w <- 190
-  if (type == "half"){
-    w <- 90
-  } else if (type != "full"){
-    warning("Invalid type. Creating two-column image.")
-  }
+plot_save <- function(p, filename, size = 1, ar = 1, dev = "jpeg"){
+  allowed_devs <- c("eps", "ps", "tex", "pdf", "jpeg", 
+                    "tiff", "png", "bmp", "svg")
+  if (!(dev %in% allowed_devs))
+    stop("Invalid device.")
+  if (dev != "jpeg" & !str_detect(filename, paste0("\\.", dev)))
+    filename <- paste0(filename, ".", dev)
+  if (dev == "jpeg" & !str_detect(filename, "\\.jpg|\\.jpeg"))
+    filename <- paste0(filename, ".jpg")
+  w <- round(190 * size)
   h <- w/ar
   ggsave(filename = filename,
          plot = p,
