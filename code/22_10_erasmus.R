@@ -36,4 +36,4 @@ p <- ggplot(gender_df, aes(x = reorder(sending_country_code, - Female / all),
   scale_x_discrete("Sending country") +
   scale_y_continuous("Proportion of female learners", limits = c(0.3, 0.7))
 
-plot_save(p, "figures/22_10_world_erasmus.jpg", type = "full")
+plot_save(p, "figures/22_10_erasmus.jpg", type = "full")
